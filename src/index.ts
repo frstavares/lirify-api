@@ -1,8 +1,8 @@
 import fetch from 'node-fetch';
 import * as express from 'express';
-import * as cors from 'cors';
 import * as passport from 'passport';
 import * as jsd from 'jsdom';
+const cors = require('cors');
 const SpotifyStrategy = require('passport-spotify').Strategy;
 
 const app = express();

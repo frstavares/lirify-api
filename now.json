@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "name": "lirify-api",
   "builds": [
     {
       "src": "dist/index.js",
-      "use": "@now/node-server"
+      "use": "@now/now-server"
     }
   ],
   "routes": [
@@ -14,11 +13,8 @@
         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
         "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
       },
-      "src": "/.*",
+      "src": "/",
       "dest": "/dist/index.js"
     }
-  ],
-  "env": {
-    "VERSION": "@version"
-  }
+  ]
 }

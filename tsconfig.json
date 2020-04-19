@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "declaration": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "typeRoots": ["node_modules/@types"],
+    "declarationMap": true
+  },
+  "include": ["src/**/**.ts"],
+  "exclude": ["node_modules"]
+}

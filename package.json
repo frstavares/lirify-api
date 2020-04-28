@@ -19,6 +19,7 @@
     "watch": "ts-node-dev src/index.ts"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.6",
     "@types/express": "^4.17.6",
     "@types/jsdom": "^16.2.1",
     "@types/node": "^13.13.0",

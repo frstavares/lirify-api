@@ -19,7 +19,7 @@ app.listen(port, () => {
 
 const clientID = '6569af9a855a4837ba83e6518597de53';
 const clientSecret = '2c76a66b557d4995900000ac32b66f1f';
-const redirectUrl = process.env.webUrl || `http://${host}:3000/`;
+const redirectUrl = process.env.WEB_URL || `http://${host}:3000/`;
 
 /**
  * Passport session setup.

@@ -7,17 +7,19 @@ const SpotifyStrategy = require('passport-spotify').Strategy;
 
 const app = express();
 const port = process.env.PORT || 3005;
+const host = process.env.HOST || 'localhost';
+const apiUrl = process.env.API_URL || `http://${host}:${port}`;
 
 app.use(express.json());
 app.use(cors());
-console.log(process);
+
 app.listen(port, () => {
-	console.log(`> Ready On Server http://${(process as any).env.HOST}:${port}`);
+	console.log(`> Ready On Server ${apiUrl}`);
 });
 
 const clientID = '6569af9a855a4837ba83e6518597de53';
 const clientSecret = '2c76a66b557d4995900000ac32b66f1f';
-const redirectUrl = `http://${(process as any).env.HOST}:3000/`;
+const redirectUrl = process.env.webUrl || `http://${host}:3000/`;
 
 /**
  * Passport session setup.
@@ -47,7 +49,7 @@ passport.use(
 		{
 			clientID,
 			clientSecret,
-			callbackURL: `http://${(process as any).env.HOST}:${port}/callback`,
+			callbackURL: `${apiUrl}/callback`,
 		},
 		async (accessToken: any, refreshToken: any, expiresIn: any, profile: any, done: any) => {
 			// To keep the example simple, the user's spotify profile is returned to
@@ -159,7 +161,6 @@ app.get('/lyrics', async (req, res) => {
 	if (searchResults) {
 		const geniusResponse = await searchResults.json();
 
-		console.log(geniusResponse.response.sections);
 		const section = geniusResponse.response.sections.find(
 			(section: any) => section.type === 'top_hit',
 		);
@@ -172,7 +173,6 @@ app.get('/lyrics', async (req, res) => {
 		}
 
 		const lyricsResult = section.hits[0];
-		console.log(lyricsResult);
 
 		if (!lyricsResult) {
 			res.status(404);
